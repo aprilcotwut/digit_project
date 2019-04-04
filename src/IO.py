@@ -18,6 +18,9 @@ def readData(filename):
 
     return features, labels
 
+#def readTest(filename):
+
+
 
 
 
