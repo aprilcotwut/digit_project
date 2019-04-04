@@ -15,5 +15,8 @@ and so I suggest that we attempt to use the following data structures.
   3. k-nearest neighbors 
 
 According to some reading I have done, all of these things should achieve at 95% accuracy or better.
-
-
+# Architecture
+We need to talk about how to organize this program. 
+Perhaps we could put all of the IO in a single file, 
+and each method in another file? I'm working on the IO as
+we speak, but it's pretty trivial
