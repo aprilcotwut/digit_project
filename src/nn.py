@@ -1,4 +1,5 @@
 import numpy as np
+import sys
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
@@ -65,7 +66,13 @@ def learningRateScore(layers,nodes,alpha,tol,lri):
         f.write(str(crossVal))
 
 if __name__ == "__main__":
-    learningRateScore(1,1000,0.000001,.01,0.01)
+    layers = int(sys.argv[1])
+    nodes = int(sys.argv[2])
+    alpha = float(sys.argv[3])
+    tol = float(sys.argv[4])
+    lri = float(sys.argv[5])
+    learningRateScore(layers,nodes,alpha,tol,lri)
+    #learningRateScore(1,1000,0.000001,.01,0.01)
     #nnfit(50,2,'tanh')
     
 

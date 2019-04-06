@@ -8,15 +8,26 @@ packages to claim that we have explored the parameter space of
 the problem. 
 
 # methods
-We have essentially already solved this problem with a neural net, 
-and so I suggest that we attempt to use the following data structures.
-  1. entropy reducing decision tree
-  2. random forest with several different numbers of trees (non entropy reducing)
-  3. k-nearest neighbors 
+Okay, so I ditched a number of the ideas that I put forward earlier.
+So far, I am using a Multi-layer-perceptron (neural net) 
+with various settings. At this point, the code is at such 
+a catastrophic level of spaghetti that I don't really 
+want anyone to see it. I promise I will clean it up later.
+
+
+
 
 According to some reading I have done, all of these things should achieve at 95% accuracy or better.
-# Architecture
-We need to talk about how to organize this program. 
-Perhaps we could put all of the IO in a single file, 
-and each method in another file? I'm working on the IO as
-we speak, but it's pretty trivial
+Check n1try/mlp.py for some working code if you're interested.
+
+
+# resources
+I am going to try to collect documentation in a way that is easy to refer to 
+when making the report and presentation. Everything here is easily googlable
+but I figured that aggregating it couldn't hurt anything.
+
+[visualizing hidden layers](https://scikit-learn.org/stable/auto_examples/neural_networks/plot_mnist_filters.html)
+[on the optimism of cross validation](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html#sphx-glr-auto-examples-model-selection-plot-nested-cross-validation-iris-py)
+[some usage tips for neural nets in scikit learn](https://scikit-learn.org/stable/modules/neural_networks_supervised.html#classification)
+[MLPClassifier docs](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier)
+[cross_val_score docs](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)
