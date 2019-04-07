@@ -1,9 +1,16 @@
 import numpy as np
 import matplotlib as mpl
+mpl.use("Agg")
 import sys 
 import matplotlib.pyplot as plt
 
 def render(filename,i):
+    """
+        Use this to take an example from test.csv and turn 
+        that into a png image. Renders on run, but if you
+        run over ssh, then you should comment out line
+        19.
+    """
     print('running render')
     A = np.genfromtxt(filename,skip_header=1,dtype=float,delimiter=',')
     img = np.array(A[i,:],copy=True)
@@ -11,7 +18,7 @@ def render(filename,i):
     img = img.reshape(28,28)
     print(img.shape)
     plt.imshow(img,cmap='gray')
-    plt.savefig("img" + str(i)+filename+"render"+ ".png")
+    plt.savefig("img" + str(i)+"render"+ ".png")
 
 
 if __name__ == '__main__':

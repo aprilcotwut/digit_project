@@ -2,7 +2,7 @@ import sys
 import numpy as np
 
 def avg(filename):
-    with open(filename,'r') as f:
+    with open('../' + filename,'r') as f:
         a = f.readline()
         a = a.strip('][')
         b = a.split()
@@ -36,7 +36,7 @@ def aggregate(infile, outfile):
         for line in lines:
             line = line.strip('\n')
             print(line)
-            out.append(parse(line))
+            out.append(parse( line))
     #return out 
     #with open(outfile,'w') as g:
     #    import numpy as np
