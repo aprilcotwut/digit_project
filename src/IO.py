@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 def readData(filename,test=None):
     if test == True:
         data=np.genfromtxt(filename,dtype=float,delimiter=',',skip_header=1)
-        np.random.shuffle(data)
-        return 
+        #np.random.shuffle(data)
+        return data
     data = np.genfromtxt(filename,dtype=float,delimiter=",",skip_header=1)
 
     # shuffle rows of data array
