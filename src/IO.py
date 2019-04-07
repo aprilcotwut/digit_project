@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # skl expect n_samples x n_features array and n_samples array
 def readData(filename,test=None):
     if test == True:
-        data=np.genfromtxt(filename,dtype=float,delimiter=','mskip_header=1)
+        data=np.genfromtxt(filename,dtype=float,delimiter=',',skip_header=1)
         np.random.shuffle(data)
         return 
     data = np.genfromtxt(filename,dtype=float,delimiter=",",skip_header=1)
