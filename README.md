@@ -26,8 +26,12 @@ I am going to try to collect documentation in a way that is easy to refer to
 when making the report and presentation. Everything here is easily googlable
 but I figured that aggregating it couldn't hurt anything.
 
-[visualizing hidden layers](https://scikit-learn.org/stable/auto_examples/neural_networks/plot_mnist_filters.html)
-[on the optimism of cross validation](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html#sphx-glr-auto-examples-model-selection-plot-nested-cross-validation-iris-py)
-[some usage tips for neural nets in scikit learn](https://scikit-learn.org/stable/modules/neural_networks_supervised.html#classification)
-[MLPClassifier docs](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier)
-[cross_val_score docs](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)
+1. [visualizing hidden layers](https://scikit-learn.org/stable/auto_examples/neural_networks/plot_mnist_filters.html)
+
+2. [on the optimism of cross validation](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html#sphx-glr-auto-examples-model-selection-plot-nested-cross-validation-iris-py)
+
+3. [some usage tips for neural nets in scikit learn](https://scikit-learn.org/stable/modules/neural_networks_supervised.html#classification)
+
+4. [MLPClassifier docs](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier)
+
+5. [cross_val_score docs](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html)
