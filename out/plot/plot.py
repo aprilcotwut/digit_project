@@ -12,9 +12,15 @@ def plot(filename):
     """
     A = np.genfromtxt(filename,delimiter=',')
     print(A.shape)
-    a = np.log10(A[:,2])
-    b = A[:,5]
-    plt.plot(a,b,'bs')
+    a = np.log10(A[:5,2])
+    b = A[:5,5]
+    c = np.log10(A[5:,2])
+    d = A[5:,5]
+    plt.plot(a,b,'y-',label="1 hidden layer")
+    plt.plot(c,d,'c-',label="3 hidden layers")
+    plt.xlabel(r'$ log_{10} (\alpha )$')
+    plt.ylabel("Mean cross validation score (5 folds)")
+    plt.legend()
     plt.savefig("cvs.dat.png")
 
 
