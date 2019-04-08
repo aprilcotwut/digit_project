@@ -73,9 +73,7 @@ def prediction(modelfile, datafile, outfile):
     print(x[0:10])
     print(y.shape)
     print(x.shape)
-    with open(outfile,'w') as f:
-        f.write('ImageId,Label')
-    np.savetxt(outfile,np.transpose(np.array([x,y])).astype(int),fmt='%i',delimiter=',',header="\bImageId,Label",comments='')
+    np.savetxt(outfile,np.transpose(np.array([x,y])).astype(int),fmt='%i',delimiter=',',header="ImageId,Label",comments='')
 
 
 
