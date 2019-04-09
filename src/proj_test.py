@@ -19,7 +19,7 @@ def readModel(filename):
 def genCVplots(filename):
     clf = readModel(filename)
     dat = pds.DataFrame(clf.cv_results_)
-    #print(dat['param_alpha'][6])
+    print(dat)
     #fig = dat.plot('param_alpha','mean_test_score',kind='line',subplots=True,logx=True)[0].get_figure()
     #fig.savefig("dat.png")
     #params = {'a':[0.5,0.1,0.001,0.0001],'hl':[(128,128),(512,),(256,)],'s':['sgd','adam']}
@@ -81,5 +81,5 @@ def prediction(modelfile, datafile, outfile):
 
 
 if __name__ == "__main__":
-        #genCVplots(sys.argv[1])
-        prediction(sys.argv[1],'../data/test.csv','out.csv') 
+        genCVplots(sys.argv[1])
+        #prediction(sys.argv[1],'../data/test.csv','out.csv') 

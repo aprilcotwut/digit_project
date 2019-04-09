@@ -1,4 +1,4 @@
-from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score, GridSearchCV
 from sklearn.externals import joblib
 from sklearn.preprocessing import minmax_scale
