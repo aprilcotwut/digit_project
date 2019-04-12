@@ -2,6 +2,7 @@ import numpy as np
 import joblib as jl
 import matplotlib as mpl
 mpl.use("Agg")
+# generate plots over an ssh connection
 import matplotlib.pyplot as plt
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import cross_val_score, GridSearchCV
@@ -13,33 +14,50 @@ import sys
 import pandas as pds
 
 def readModel(filename):
+    """
+        reads a model file from a python pickle
+        expect a neural net, not a random forest
+    """
     clf = joblib.load(filename)
     return clf
 
 def genCVplots(filename):
+    """
+        generates crossvalidation plots 
+        from the model learned in proj_train.py
+        will plot mean cross validation score against 
+        alpha (regularization) term.
+    """
     clf = readModel(filename)
     dat = pds.DataFrame(clf.cv_results_)
+    
+    # print out the pandas dataFrame from the learned model
     print(dat)
+
     #fig = dat.plot('param_alpha','mean_test_score',kind='line',subplots=True,logx=True)[0].get_figure()
     #fig.savefig("dat.png")
     #params = {'a':[0.5,0.1,0.001,0.0001],'hl':[(128,128),(512,),(256,)],'s':['sgd','adam']}
     
+    # stupid solution to a stupid problem
     hl128x128_solS = []
     hl128x128_solA = []
     hl256_solS = []
     hl256_solA = []
     hl512_solS = []
     hl512_solA = []
+    # perm contains [alpha, mean CV score, mean train score, mean fit time]
+    # in each component. 
     perm = [hl128x128_solS,hl128x128_solA,hl256_solS,hl256_solA,hl512_solS,hl512_solA]
     for x in range(0,6):
         for y in range(0,4):
             i = x + 6*y
             perm[x].append([dat['param_alpha'][i],dat['mean_test_score'][i],dat['mean_train_score'][i],dat['mean_fit_time'][i]])
     
-    #print(np.array(perm)[0,:,:])
     pl = np.array(perm)
 
 
+    # these arrays are used for the clumsy labeling of rows and 
+    # columns in the final plot
     r = ['2 HL, 128 nodes','1 HL, 256 nodes','1 HL, 512 nodes']
     c = ['sgd','adam']
     for x in range(0,6):
@@ -64,6 +82,14 @@ def genCVplots(filename):
     #pds.plotting.parallel_coordinates(dat,'Names')
 
 def prediction(modelfile, datafile, outfile):
+    """
+        this will generate a prediction file which 
+        can serve as input for kaggle.com
+
+        reads model from modelfile,
+        reads test features from datafile
+        writes output to outfile (should be a .csv file)
+    """
     clf = readModel(modelfile).best_estimator_
     X_t = readData(datafile,test=True)
     X = minmax_scale(X_t)
