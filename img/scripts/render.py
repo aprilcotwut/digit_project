@@ -16,8 +16,9 @@ def render(filename,i):
     img = np.array(A[i,:],copy=True)
     print(img.shape)
     img = img.reshape(28,28)
+    img = 255 - img
     print(img.shape)
-    plt.imshow(img,cmap='gray')
+    plt.imshow(img, cmap="gray", vmin=0, vmax=255)
     plt.savefig("img" + str(i)+"render"+ ".png")
 
 
