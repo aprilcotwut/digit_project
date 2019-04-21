@@ -1,0 +1,27 @@
+\frametitle{References}
+
+\tiny
+
+[1] Bernard, S., Adam, S., \& Heutte, L. (2007). \textit{Using Random Forests for Handwritten Digit Recognition}. Ninth International Conference on Document Analysis and Recognition (ICDAR 2007) Vol 2. doi:10.1109/icdar.2007.4377074
+
+\vspace{3mm}
+
+[2] Hastie, T., Tibshirani, R., \& Friedman, J. H. (2017). The Elements of Statistical Learning: Data Mining, Inference, and Prediction. New York, NY: Springer.
+
+\vspace{3mm}
+
+[3] Kingma, D. P., \& Lei Ba, J. (2015).
+\textit{Adam: A Method for Stochastic Optimization}. Conference Paper at ICLR. Retrieved from https://arxiv.org/abs/1412.6980.
+
+\vspace{3mm}
+
+[4] Pedregosa \textit{et al} (2011) \textit{Scikit-learn: Machine Learning in Python}. JMLR 12, pp. 2825-2830.
+
+\vspace{3mm}
+
+[5] Robnik-Šikonja, M. (2004). \textit{Improving Random Forests.} Machine Learning: ECML 2004 Proceedings, Springer, Berlin, 359-370.
+
+\vspace{3mm}
+
+[6] Y. LeCun \textit{et al} (1995) \textit{Learning Algorithms For Classification: A Comparison On Handwritten Digit Recognition}, in Oh, J. H. and Kwon, C. and Cho, S. (Eds), Neural Networks: The Statistical Mechanics Perspective, 261-276, World Scientific.
+
