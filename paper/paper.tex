@@ -62,7 +62,7 @@
 \end{abstract}
 
 \section{The MINST Dataset}
-The MNIST digit database is a classic starting point for individuals wanting to learn the basics of computer vision and get hands on experience with machine learning algorithms. The dataset is composed of 70,000 28x28 pixel grey-scale images of handwritten numbers between zero and nine [6]. The pre-flattened Kaggle dataset provides you with 42,000 training examples and 28,000 testing examples. Each 28x28 pixel image is represented by a 784 length vector with each element containing some integer between 0 and 255 representing the lightness or darkness of that pixel. Additionally, the training dataset provides the correct labels for each image. These images can be reshaped and rendered from the provided dataset as shown in Figure 1.
+The MNIST digit database is a classic starting point for individuals wanting to learn the basics of computer vision and get hands on experience with machine learning algorithms. The dataset is composed of 70,000 28x28 pixel grey-scale images of handwritten numbers between zero and nine [7]. The pre-flattened Kaggle dataset provides you with 42,000 training examples and 28,000 testing examples. Each 28x28 pixel image is represented by a 784 length vector with each element containing some integer between 0 and 255 representing the lightness or darkness of that pixel. Additionally, the training dataset provides the correct labels for each image. These images can be reshaped and rendered from the provided dataset as shown in Figure 1.
 \begin{figure}[h]
   \centering
     \begin{minipage}[t]{0.3\textwidth}
@@ -80,12 +80,14 @@ The MNIST digit database is a classic starting point for individuals wanting to 
 For both machine learning algorithms, training and cross-validation was done using \verb+sklearn+'s \verb+model_selection.GridSearchCV+. The grid search takes in a grid of the hyper-parameters the user wishes to contrast and exhaustively considers all possible parameter combinations. Rather than train the data on the entire training dataset, \verb+GridSearchCV+ partitions the data into $k$ sections then trains the data on $k-1$ of the sections, leaving the last partition as a pseudo-test dataset. The mean cross-validation score (CVS) is the averaged prediction rate over all $k$ segments of the training data, and the hyper-parameter combination with the best mean CVS is chosen [4].
 
 \section{Random Forest}
-A Random Forest (RF) is a common starting algorithm for those new to machine learning. This is in part due to it's ease of use, but also due to it's flexibility. While in this assignment it is used for classification, it can be also be used in regression problems [2]. Each tree is formed from a bootstrap sample (random sampling with replacement) then grown very similarly to a decision tree. Our random forest is a ``highly random'' random forest which splits data with no discretion to promote model volatility.\verb+Sklearn+'s \verb+RandomForestClassifier+ combines the probabilistic prediction of each tree, as this has been shown to preform better than the traditional approach of picking a classification based on a majority vote [4,5].
+A Random Forest (RF) is a common starting algorithm for those new to machine learning. This is in part due to it's ease of use, but also due to it's flexibility. Random Forest are well apt for both classification and regression problems [2]. To individuals keen to apply machine learning algorithms but with little computing resources, the speedy training time of RF's is enticing. Additionally, for low-dimensional problems overfitting is unlikely with minimal hyper-parameter tuning [2].
 
-These models are generally very fast to train, but depending on the complexity, can suffer from slow run-time performance. Generally speaking, overfitting can be negated by simply adding more trees to your model [2]. This approach eventually results in diminishing returns, and for high-dimensional problems such as digit recognition, is especially impractical [5].
+Each tree of an RF is formed from a bootstrap sample (random sampling with replacement) then grown very similarly to a decision tree. Our RF is ``highly random'', meaning it splits data with no discretion to promote model volatility. \verb+Sklearn+'s \verb+RandomForestClassifier+ combines the probabilistic prediction of each tree, as this has been shown to preform better than the traditional approach of picking a classification based on a majority vote [4,5].
+
+In the case of high-dimensional problems and real-world applications, the disadvantages of RF's become apparent. While RF's training time is consistently minimal in comparison to deep learning architectures, it's run-time performance suffers heavily [6]. In practical applications, classification speed is often critical to a model's viability. In the case of low-dimensional problems, an RF will become more general as more trees are added [2], but this approach eventually results in diminishing returns [5]. High dimensional datasets frequently have attribute interdependencies, meaning this process of node splitting on a single attribute will be incredibly inefficient [6].
 
 \subsection{Implementation}
-The 784 length vector of input data is normalized to range from 0 to 1 using \verb+sklearn+'s \verb+preprocessing.minmax_scale+. In order to improve our model's predictive power, we contrasted the results from our hyper-parameters \verb+n_estimators+ (number of trees) and  \verb+min_samples_split+ (minimum number of leafs required to split a node). Specifically we allowed 10, 50, 100, and 300 trees to be developed and 2, 4, 8, and 16 as the minimum number of leaves. The later can be thought of as a measure of complexity, with lower minimum resulting in higher complexity. Once the code was prepared, training took approximately 45 seconds.
+The 784 length vector of input data is normalized to range from 0 to 1 using \verb+sklearn+'s \verb+preprocessing.minmax_scale+. In order to improve our model's predictive power, we contrasted the results from our hyper-parameters \verb+n_estimators+ (number of trees) and  \verb+min_samples_split+ (minimum number of leafs required to split a node). Specifically we allowed 10, 50, 100, and 300 trees to be developed and 2, 4, 8, and 16 as the minimum number of leaves. The later can be thought of as a measure of complexity, with lower minimum resulting in higher complexity. Once the code was prepared, training took approximately 45 seconds per model.
 \begin{figure}[h]
     \centering
     \begin{minipage}[t]{0.45\textwidth}
@@ -140,7 +142,11 @@ Training and cross-validation was done using \verb+model_selection.GridSearchCV+
 \end{figure}
 
 \section{Conclusions}
-As expected, our MLP was better suited for handwritten digit recognition. It is possible that data processing to reduce dimensionality would help the RF preform better, however computer vision problems are still better left in the hands of NN's and similar models. One advantage of the RF is it's training time was approximately $1/60^{th}$ of our MLP's, however adding additional trees would begin to bridge this gap and further improve it's classification accuracy.
+As expected, our MLP was better suited for handwritten digit recognition. The high-dimensionality of the MNIST dataset provides a difficult hurdle for any RF, however possible improvements could be made to our current model.
+
+Previous studies have shown that models clearly overfit for large depth values. Redeveloping our model to consider both the tree depth and the minimum number of leaves would put a stronger constraint on model complexity. While more difficult to implement, data processing to reduce dimensionality could be very effective.
+
+While it's likely the former changes to our RF will improve it's classification accuracy at a fraction of the MLP's training time, it's classification time will still suffer. Overall, computer vision problems are still better left in the hands of NN's and similar models.
 
 \clearpage
 
@@ -160,6 +166,8 @@ As expected, our MLP was better suited for handwritten digit recognition. It is 
 
 [5] Robnik-Šikonja, M. (2004). \textit{Improving Random Forests.} Machine Learning: ECML 2004 Proceedings, Springer, Berlin, 359-370.
 
-[6] Y. LeCun \textit{et al} (1995) \textit{Learning Algorithms For Classification: A Comparison On Handwritten Digit Recognition}, in Oh, J. H. and Kwon, C. and Cho, S. (Eds), Neural Networks: The Statistical Mechanics Perspective, 261-276, World Scientific.
+[6] Xu, B., Huang, J. Z., Williams, G., Wang, Q., & Ye, Y. (2012). \textit{Classifying Very High-Dimensional Data with Random Forests Built from Small Subspaces.} International Journal of Data Warehousing and Mining, 8(2), 44-63. doi:10.4018/jdwm.2012040103
+
+[7] Y. LeCun \textit{et al} (1995) \textit{Learning Algorithms For Classification: A Comparison On Handwritten Digit Recognition}, in Oh, J. H. and Kwon, C. and Cho, S. (Eds), Neural Networks: The Statistical Mechanics Perspective, 261-276, World Scientific.
 
 \end{document}

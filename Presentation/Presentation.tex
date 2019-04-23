@@ -7,6 +7,7 @@
 \usetheme{Antibes}%
 \usecolortheme{rose}%
 \setbeamerfont{footnote}{size=\tiny}
+\setbeamercolor{footnotet}{bg=white}
 %
 %----------------------------------------------------------
 % This is a sample document for the LaTeX Slides Class
@@ -54,6 +55,9 @@
 %%%
 
 \usepackage{amsmath}%
+\usepackage{nopageno}%
+\usepackage{framed}%
+\usepackage{animate}%
 \usepackage{amsfonts}%
 \usepackage{amssymb}%
 \usepackage{graphicx}%
@@ -67,7 +71,7 @@
 \usepackage{microtype}      % microtypography
 \usepackage{verbatim}
 
-%%  \usepackage{bibentry} 
+%%  \usepackage{bibentry}
 %%  \usepackage{natbib}
 %------------------------------------------------------------------
 \hfuzz5pt % Don't bother to report overfull boxes < 5pt
@@ -110,7 +114,7 @@
 \end{frame}
 % ----------------------------------------------------------------
 \begin{frame}{The MINST Dataset}
-%The MNIST digit database is a classic starting point for individuals wanting to learn the basics of computer vision and get hands on experience with machine learning algorithms. The dataset is composed of 70,000 28x28 pixel grey-scale images of handwritten numbers between zero and nine [6]. The pre-flattened Kaggle dataset provides you with 42,000 training examples and 28,000 testing examples. Each 28x28 pixel image is represented by a 784 length vector with each element containing some integer between 0 and 255 representing the lightness or darkness of that pixel. Additionally, the training dataset provides the correct labels for each image. These images can be reshaped and rendered from the provided dataset as shown in Figure 1. 
+%The MNIST digit database is a classic starting point for individuals wanting to learn the basics of computer vision and get hands on experience with machine learning algorithms. The dataset is composed of 70,000 28x28 pixel grey-scale images of handwritten numbers between zero and nine [6]. The pre-flattened Kaggle dataset provides you with 42,000 training examples and 28,000 testing examples. Each 28x28 pixel image is represented by a 784 length vector with each element containing some integer between 0 and 255 representing the lightness or darkness of that pixel. Additionally, the training dataset provides the correct labels for each image. These images can be reshaped and rendered from the provided dataset as shown in Figure 1.
 \begin{figure}[h]
   \centering
     \begin{minipage}[t]{0.3\textwidth}
@@ -128,61 +132,52 @@
 %-----------------------------------------------------------------
 \begin{frame}{The MINST Dataset}
 \begin{itemize}
-	\item 70,000 $28\times 28$ pixel grey-scale images of handwritten numbers, 0 through 9.
+	\item 70,000 $28\times 28$ pixel grey-scale images of handwritten numbers, 0 through 9
+	\vspace{3.5mm}
 	\item Each image is represented by a vector of length 784, with each element taking a value between 0 and 255 to represent lightness/darkness of the pixel
+	\vspace{3.5mm}
 	\item Pre-flattened Kaggle dataset
 	\begin{itemize}
 		\item 42,000 training examples
 		\item 28,000 testing examples
 	\end{itemize}
 \end{itemize}
-%The MNIST digit database is a classic starting point for individuals wanting to learn the basics of computer vision and get hands on experience with machine learning algorithms. The dataset is composed of 70,000 28x28 pixel grey-scale images of handwritten numbers between zero and nine [6]. The pre-flattened Kaggle dataset provides you with 42,000 training examples and 28,000 testing examples. Each 28x28 pixel image is represented by a 784 length vector with each element containing some integer between 0 and 255 representing the lightness or darkness of that pixel. Additionally, the training dataset provides the correct labels for each image. These images can be reshaped and rendered from the provided dataset as shown in Figure 1. 
+%The MNIST digit database is a classic starting point for individuals wanting to learn the basics of computer vision and get hands on experience with machine learning algorithms. The dataset is composed of 70,000 28x28 pixel grey-scale images of handwritten numbers between zero and nine [6]. The pre-flattened Kaggle dataset provides you with 42,000 training examples and 28,000 testing examples. Each 28x28 pixel image is represented by a 784 length vector with each element containing some integer between 0 and 255 representing the lightness or darkness of that pixel. Additionally, the training dataset provides the correct labels for each image. These images can be reshaped and rendered from the provided dataset as shown in Figure 1.
 \end{frame}
 %-----------------------------------------------------------------
 \begin{frame}[fragile]{GridSearchCV}
 \begingroup
 \small
-For both machine learning algorithms, training and cross-validation was done using \verb+sklearn+'s \verb+model_selection.GridSearchCV+.
+For both machine learning algorithms, training and cross-validation was done using \verb+sklearn+'s \verb+model_selection.GridSearchCV+
 
 \vspace{3.75mm}
 
-The grid search takes in a grid of the hyper-parameters the user wishes to contrast and exhaustively considers all possible parameter combinations.
+\verb+GridSearchCV+ partitions the data into $k$ sections then trains the data on $k-1$ of the sections, leaving the last partition as a pseudo-test dataset
 
 \vspace{3.75mm}
 
-\verb+GridSearchCV+ partitions the data into $k$ sections then trains the data on $k-1$ of the sections, leaving the last partition as a pseudo-test dataset.
+The mean cross-validation score (CVS) is the averaged prediction rate over all $k$ segments of the training data, and the hyper-parameter combination with the best mean CVS is chosen
 
-\vspace{3.75mm}
+\vspace{3.7mm}
 
-The mean cross-validation score (CVS) is the averaged prediction rate over all $k$ segments of the training data, and the hyper-parameter combination with the best mean CVS is chosen [4]. 
 \endgroup
 \end{frame}
 %-----------------------------------------------------------------
 \begin{frame}[fragile]{Random Forest}
 
-Each tree is formed from a bootstrap sample (random sampling with replacement) then grown very similarly to a decision tree. 
+Our random forest is a ``highly random'' random forest which splits data with no discretion to promote model volatility
 
 \vspace{3.75mm}
 
-Our random forest is a ``highly random'' random forest which splits data with no discretion to promote model volatility.
+\verb+Sklearn+'s \verb+RandomForestClassifier+ combines the probabilistic prediction of each tree, as this has been shown to preform better than the traditional majority vote approach
 
-\vspace{3.75mm}
+\vspace{3.7mm}
 
-\verb+Sklearn+'s \verb+RandomForestClassifier+ combines the probabilistic prediction of each tree, as this has been shown to preform better than the traditional approach of picking a classification based on a majority vote [4,5].
+These models are generally very fast to train, but depending on the complexity, can suffer from slow classification time
 
-\end{frame}
-%-----------------------------------------------------------------
-\begin{frame}{Random Forest}
+\vspace{3.7mm}
 
-These models are generally very fast to train, but depending on the complexity, can suffer from slow run-time performance. 
-
-\vspace{3.75mm}
-
-Generally, overfitting can be negated by adding more trees to your model [2]. 
-
-\vspace{3.75mm}
-
-This approach eventually results in diminishing returns, and for high-dimensional problems such as digit recognition, is especially impractical [5].
+High-dimensional data often poses a problem for Random Forests.
 
 \end{frame}
 %-----------------------------------------------------------------
@@ -190,19 +185,33 @@ This approach eventually results in diminishing returns, and for high-dimensiona
 \small
 \textbf{Implementation}
 
-Data normalized to values in [0,1] using \verb+sklearn+'s \verb+preprocessing.minmax_scale+. 
+\medskip
 
+In order to optimize our model's predictive power, we contrasted the results from the following hyper-parameters:
+\begin{itemize}
+    \item \verb+n_estimators+ (number of trees)
+    \item \verb+min_samples_split+ (minimum leaves to split node) % required to split a node
+\end{itemize}
 \vspace{3.75mm}
 
-In order to improve our model's predictive power, we contrasted the results from our hyper-parameters \verb+n_estimators+ (number of trees) and  \verb+min_samples_split+ (minimum number of leafs required to split a node). 
+Once the code was prepared, training took approximately 45 seconds per model.
 
+\end{frame}
+%-----------------------------------------------------------------
+\begin{frame}[fragile]{Random Forest}
+\small
+\textbf{Implementation}
+
+\medskip
+
+In order to optimize our model's predictive power, we contrasted the results from the following hyper-parameters:
+\begin{itemize}
+    \item \verb+n_estimators+ \{10, 20, 100, 300\}
+    \item \verb+min_samples_split+ \{2,4,8,16\}
+\end{itemize}
 \vspace{3.75mm}
 
-Specifically we allowed 10, 50, 100, and 300 trees to be developed and 2, 4, 8, and 16 as the minimum number of leaves. The later can be thought of as a measure of complexity, with lower minimum resulting in higher complexity. 
-
-\vspace{3.75mm}
-
-Once the code was prepared, training took approximately 45 seconds. 
+Once the code was prepared, training took approximately 45 seconds per model.
 
 \end{frame}
 %-----------------------------------------------------------------
@@ -227,116 +236,99 @@ Once the code was prepared, training took approximately 45 seconds.
 \end{frame}
 %-----------------------------------------------------------------
 \begin{frame}[fragile]{Random Forest}
+\small
 \textbf{Cross-Validation and Results}
 
-The $\log_2(\text{minleafsize})$ which inversely measures the complexity suggests the more complex models preform outstandingly against the training data but have little impact on the testing data, a symptom of overfitting. 
+\medskip
+
+The $\log_2(\text{minleafsize})$ which inversely measures the complexity suggests the more complex models performs outstandingly against the training data but has little impact on the testing data, a symptom of overfitting.
 
 \vspace{3.75mm}
 
 Adding trees has a similar positive affect on both datasets, however, also decreases exponentially as more trees are added. These results suggest that our model suffers from extreme levels of overfitting.
 
 \vspace{3.75mm}
-
+\begin{framed}
+\centering
 Our Kaggle submission of 300 trees and a minimum leaf number of 2 gave a prediction rate of 96.6\%
-
+\end{framed}
 \end{frame}
 %-----------------------------------------------------------------
 \begin{frame}{Multi-Layer Perceptron Classifier}
 \textbf{Contrasting Gradient Descent Algorithms}
+\vspace{3.75mm}
 
-For our MLP, we contrast stochastic gradient descent (SGD) and Adaptive Moment Estimation gradient descent (Adam GD), developed by Kingma and Lei Ba [3]. 
+A Multi-layer Perceptron (MLP) is a type of deep neural network that is trained using backpropogation. An MLP consists of at least one hidden layer, an input/features layer, and an output/targets layer
+\vspace{3.75mm}
+
+For our MLP, we contrast stochastic gradient descent (SGD) and Adaptive Moment Estimation gradient descent (Adam GD)
 
 \vspace{3.75mm}
 
-\begin{itemize}
-	\item SGD approximates the gradient by considering a single training example at a time.
-	\item Adam GD is an optimized SGD which computes adaptive learning rates for each parameter.
-\end{itemize}
-
+\end{frame}
+%-----------------------------------------------------------------
+%\begin{frame}{Multi-Layer Perceptron Classifier}
+%\tiny
+%\textbf{Adam Parameter Estimation}
+%
+%\begin{itemize}
+	%\item Exponentially decaying averages of the past gradient $\nabla_\theta f_t(\theta_{t-1})$ and
+	%square of the gradient $\nabla_\theta f_t(\theta_{t-1})^2$ are stored as estimates of the first
+	%and second moment of the gradient (mean $m_t$ and variance $v_t$ respectively).
+	%\item The exponential decay rates $\beta_1$ and $\beta_2$ are initialized (generally near 1)\footnote{The
+	%developers recommended default is $\beta_1 = 0.9$ and $\beta_2 = 0.999$. [3]} such that the moments can be
+	%more specifically calculated using the following:
+	%\begin{align*}
+	%m_t \leftarrow& \beta_1 \cdot m_{t-1} + (1-\beta_1)\cdot \nabla_\theta f_t(\theta_{t-1})\\
+	%v_t \leftarrow& \beta_2 \cdot v_{t-1} + (1-\beta_2)\cdot \nabla_\theta f_t(\theta_{t-1})^2
+	%\end{align*}
+	%\item With the initial $m_0$ and $v_0$ set to 0. In order to correct for bias, the following bias-corrected
+	%moments are then computed:
+	%\begin{align*}
+	%\hat{m_t} \leftarrow& m_t/(1-\beta_1^t)\\
+	%\hat{v_t} \leftarrow& v_t/(1-\beta_2^t)
+	%\end{align*}
+	%\item With $\beta_1^t$ and $\beta_2^t$ indicating $\beta_1$ and $\beta_2$ to the power of $t$.
+	%Given some $\alpha$ and $\epsilon$ as regularization parameters, the parameters $\theta_t$ are then
+	%updated using the following:
+	%\begin{align*}
+	%\theta_t \leftarrow& \theta_{t-1} - \alpha \cdot \hat{m_t}/(\sqrt{\hat{v_t}+\epsilon})
+	%\end{align*}
+	%\item This process is repeated until $\theta$ converges [3].
+%\end{itemize}
+%
+%\end{frame}
+%-----------------------------------------------------------------
+\begin{frame}{Multi-Layer Perceptron Classifier}
+    \textbf{Optimizing SGD}
+    \includegraphics[width=0.9\textwidth]{patho.png}
 \end{frame}
 %-----------------------------------------------------------------
 \begin{frame}{Multi-Layer Perceptron Classifier}
-\tiny
-\textbf{Adam Parameter Estimation}
-
-\begin{itemize}
-	\item Exponentially decaying averages of the past gradient $\nabla_\theta f_t(\theta_{t-1})$ and 
-	square of the gradient $\nabla_\theta f_t(\theta_{t-1})^2$ are stored as estimates of the first 
-	and second moment of the gradient (mean $m_t$ and variance $v_t$ respectively).
-	\item The exponential decay rates $\beta_1$ and $\beta_2$ are initialized (generally near 1)\footnote{The 
-	developers recommended default is $\beta_1 = 0.9$ and $\beta_2 = 0.999$. [3]} such that the moments can be 
-	more specifically calculated using the following:
-	\begin{align*}
-	m_t \leftarrow& \beta_1 \cdot m_{t-1} + (1-\beta_1)\cdot \nabla_\theta f_t(\theta_{t-1})\\
-	v_t \leftarrow& \beta_2 \cdot v_{t-1} + (1-\beta_2)\cdot \nabla_\theta f_t(\theta_{t-1})^2 
-	\end{align*}
-	\item With the initial $m_0$ and $v_0$ set to 0. In order to correct for bias, the following bias-corrected 
-	moments are then computed:
-	\begin{align*}
-	\hat{m_t} \leftarrow& m_t/(1-\beta_1^t)\\
-	\hat{v_t} \leftarrow& v_t/(1-\beta_2^t)
-	\end{align*}
-	\item With $\beta_1^t$ and $\beta_2^t$ indicating $\beta_1$ and $\beta_2$ to the power of $t$. 
-	Given some $\alpha$ and $\epsilon$ as regularization parameters, the parameters $\theta_t$ are then 
-	updated using the following:
-	\begin{align*}
-	\theta_t \leftarrow& \theta_{t-1} - \alpha \cdot \hat{m_t}/(\sqrt{\hat{v_t}+\epsilon})
-	\end{align*}
-	\item This process is repeated until $\theta$ converges [3].
-\end{itemize}
-
-\end{frame}
-%-----------------------------------------------------------------
-\begin{frame}{Multi-Layer Perceptron Classifier}
-\scriptsize
+\small
 \textbf{Implementation}
 
-In addition to contrasting GD algorithms we also varied:
+\medskip
+
+In addition to our gradient descent algorithm, the following hyper-parameters were also varied:
 \begin{itemize}
-	\item the number of hidden nodes between 128, 256, and 512
-	\item the number of hidden layers either 1 or 2
-	\item $\alpha$ at 0.5, 0.1, 0.001, and 0.0001
+	\item Hidden Nodes: 128, 256, and 512
+	\item Hidden Layers: 1 and 2
+	\item Regularization Parameter ($\alpha$): 0.5, 0.1, 0.001, and 0.0001
 \end{itemize}
 \medskip
-Adam GD regularization parameters were initialized at the developer's (Kingma and Lei Ba) recommended defaults:
-\begin{itemize}
-	\item $\epsilon = 10^{-8}$ 
-	\item $\beta_1=0.9$ 
-	\item $\beta_2=0.999$ [3]
-\end{itemize}
-\medskip
-The learning rate was not varied, instead an adaptive rate was chosen which divides the current learning rate by 5 with a starting value of $0.001$ [4]. 
+%Adam GD regularization parameters were initialized at the developer's (Kingma and Lei Ba) recommended defaults:
+%\begin{itemize}
+	%\item $\epsilon = 10^{-8}$
+	%\item $\beta_1=0.9$
+	%\item $\beta_2=0.999$ [3]
+%\end{itemize}
+%\medskip
+The learning rate was not varied, instead an adaptive rate was chosen %which divides the current learning rate by 5 with a starting value of $0.001
 
 \medskip
 
 Once the code was prepared, training took approximately 46 minutes per model. Total training time took approximately 20 hours.
-
-\end{frame}
-%-----------------------------------------------------------------
-\begin{frame}[fragile]{Multi-Layer Perceptron Classifier}
-\scriptsize
-\textbf{Cross-Validation and Results}
-\begin{itemize}
-	\item Training and cross-validation was done using \verb+model_selection.GridSearchCV+.
-	\item The measure of complexity is given by $-\log_{10}(\alpha)$, meaning lower $\alpha$ values 
-	correspond to higher complexity.
-\end{itemize}
-\medskip
-As expected, Adam gradient descent was the clear winner across the board. 
-
-Note:
-\begin{itemize}
-	\item Smaller $\alpha$ values (that is the larger $-\log_{10}(\alpha)$ values) almost consistently 
-	improves the prediction rate in (A), but for (B) in some cases causes severe prediction penalties.
-	\item The most obvious example of this is at 1 HL and 256 nodes in (B). 
-\end{itemize} 
-\medskip
-
-Our "winning" model with 1 HL and 512 nodes preformed rather consistently between training and testing datasets.
-
-\medskip
-
-The Kaggle submission of this model gave a prediction rate of 97.90\%.
 
 \end{frame}
 %-----------------------------------------------------------------
@@ -360,17 +352,47 @@ The Kaggle submission of this model gave a prediction rate of 97.90\%.
 
 \end{frame}
 %-----------------------------------------------------------------
+\begin{frame}[fragile]{Multi-Layer Perceptron Classifier}
+\scriptsize
+\textbf{Cross-Validation and Results}
+
+\smallskip
+
+\begin{itemize}
+	\item Training and cross-validation was done using \verb+model_selection.GridSearchCV+.
+	\item The measure of complexity is given by $-\log_{10}(\alpha)$, meaning lower $\alpha$ values
+	correspond to higher complexity.
+\end{itemize}
+\medskip
+As expected, Adam gradient descent was the clear winner across the board.
+
+Note:
+\begin{itemize}
+	\item Smaller $\alpha$ values (that is the larger $-\log_{10}(\alpha)$ values) almost consistently
+	improves the prediction rate in (A), but for (B) in some cases causes severe prediction penalties.
+	\item The most obvious example of this is at 1 HL and 256 nodes in (B).
+\end{itemize}
+\medskip
+
+Our "winning" model with 1 HL and 512 nodes preformed rather consistently between training and testing datasets.
+
+\medskip
+\begin{framed}
+\centering
+The Kaggle submission of this model gave a prediction rate of 97.90\%.
+\end{framed}
+\end{frame}
+%-----------------------------------------------------------------
 \begin{frame}{Conclusions}
 
-As expected, our MLP was better suited for handwritten digit recognition. 
+Overall, our MLP preformed better on the MNIST dataset
+% As expected, our MLP was better suited for handwritten digit recognition. The high-dimensionality of the MNIST dataset provides a difficult hurdle for any RF, however possible improvements could be made to our current model.
+\vspace{3.5mm}
 
-\vspace{3.75mm}
+Data processing to reduce dimensionality and tuning tree depth to add an additional constraint on model complexity could improve the classification accuracy of our RF. %Previous studies have shown that models clearly overfit for large depth values. Redeveloping our model to consider both the tree depth and the minimum number of leaves would put a stronger constraint on model complexity. While more difficult to implement, data processing to reduce dimensionality could be very effective.
+\vspace{3.5mm}
 
-It is possible that data processing to reduce dimensionality would help the RF preform better, however computer vision problems are still better left in the hands of NN's and similar models. 
-
-\vspace{3.75mm}
-
-One advantage of the RF is it's training time was approximately $1/60^{th}$ of our MLP's, however adding additional trees would begin to bridge this gap and further improve it's classification accuracy. 
+Even with improvements to our RF, neural network architectures are still better suited for computer vision problems. % While it's likely the former changes to our RF will improve it's classification accuracy at a fraction of the MLP's training time, it's classification time will still suffer. Overall, computer vision problems are still better left in the hands of NN's and similar models.
 
 \end{frame}
 %-----------------------------------------------------------------
@@ -386,7 +408,7 @@ One advantage of the RF is it's training time was approximately $1/60^{th}$ of o
 
 \vspace{3mm}
 
-[3] Kingma, D. P., \& Lei Ba, J. (2015). 
+[3] Kingma, D. P., \& Lei Ba, J. (2015).
 \textit{Adam: A Method for Stochastic Optimization}. Conference Paper at ICLR. Retrieved from https://arxiv.org/abs/1412.6980.
 
 \vspace{3mm}

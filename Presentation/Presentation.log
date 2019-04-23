@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.6.13)  18 APR 2019 15:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.6.13)  23 APR 2019 15:44
 entering extended mode
 **./Presentation.tex
 (Presentation.tex
@@ -1295,13 +1295,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 ] <CVscoreVsLeafSize.png, id=69, 462.528pt x 346.896pt>
 File: CVscoreVsLeafSize.png Graphic file (type png)
  <use CVscoreVsLeafSize.png>
-Package pdftex.def Info: CVscoreVsLeafSize.png used on input line 227.
+Package pdftex.def Info: CVscoreVsLeafSize.png used on input line 225.
 (pdftex.def)             Requested size: 138.2795pt x 103.70966pt.
 
 <CVtestVsLeafSize.png, id=70, 462.528pt x 346.896pt>
 File: CVtestVsLeafSize.png Graphic file (type png)
  <use CVtestVsLeafSize.png>
-Package pdftex.def Info: CVtestVsLeafSize.png used on input line 227.
+Package pdftex.def Info: CVtestVsLeafSize.png used on input line 225.
 (pdftex.def)             Requested size: 138.2795pt x 103.70966pt.
  [9
 
@@ -1314,35 +1314,33 @@ Package pdftex.def Info: CVtestVsLeafSize.png used on input line 227.
 
 ] [12
 
-] [13
-
 ]
 \openout4 = `Presentation.vrb'.
 
- (Presentation.vrb) [14
+ (Presentation.vrb) [13
 
 ]
-<TrainscoreVsAlpha.png, id=115, 462.528pt x 346.896pt>
+<TrainscoreVsAlpha.png, id=105, 462.528pt x 346.896pt>
 File: TrainscoreVsAlpha.png Graphic file (type png)
  <use TrainscoreVsAlpha.png>
-Package pdftex.def Info: TrainscoreVsAlpha.png used on input line 361.
+Package pdftex.def Info: TrainscoreVsAlpha.png used on input line 369.
 (pdftex.def)             Requested size: 138.2795pt x 103.70966pt.
 
-<CVscoreVsAlpha.png, id=116, 462.528pt x 346.896pt>
+<CVscoreVsAlpha.png, id=106, 462.528pt x 346.896pt>
 File: CVscoreVsAlpha.png Graphic file (type png)
  <use CVscoreVsAlpha.png>
-Package pdftex.def Info: CVscoreVsAlpha.png used on input line 361.
+Package pdftex.def Info: CVscoreVsAlpha.png used on input line 369.
 (pdftex.def)             Requested size: 138.2795pt x 103.70966pt.
- [15
+ [14
 
- <./TrainscoreVsAlpha.png> <./CVscoreVsAlpha.png>] [16
+ <./TrainscoreVsAlpha.png> <./CVscoreVsAlpha.png>] [15
 
 ]
 \openout4 = `Presentation.vrb'.
 
- (Presentation.vrb) [17
+ (Presentation.vrb) [16
 
-] [18
+] [17
 
 ]
 \tf@nav=\write6
@@ -1354,37 +1352,34 @@ Package pdftex.def Info: CVscoreVsAlpha.png used on input line 361.
 \tf@snm=\write8
 \openout8 = `Presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 423.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 423.
  (Presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 415.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 423.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 423.
 Package rerunfilecheck Info: File `Presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 19999 strings out of 493323
- 371918 string characters out of 3139066
- 480569 words of memory out of 3000000
- 22955 multiletter control sequences out of 15000+200000
- 19283 words of font info for 84 fonts, out of 3000000 for 9000
+ 19967 strings out of 493323
+ 371148 string characters out of 3139066
+ 476569 words of memory out of 3000000
+ 22925 multiletter control sequences out of 15000+200000
+ 18989 words of font info for 83 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,11n,59p,800b,511s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss17.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmssi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmssi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-msy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on Presentation.pdf (18 pages, 382177 bytes).
+ 56i,7n,59p,800b,383s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss17.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmss9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on Presentation.pdf (17 pages, 338205 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
- 16974 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 188 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
+ 16462 words of extra memory for PDF output out of 17280 (max. 10000000)
 
